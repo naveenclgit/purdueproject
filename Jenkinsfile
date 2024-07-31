@@ -15,7 +15,7 @@ pipeline
 		{
 			steps
 			{
-				sh 'mvn compile'
+				mvn compile
 			}
 		}
 
@@ -23,7 +23,7 @@ pipeline
 		{
 			steps
 			{
-				sh 'mvn test'
+				mvn test
 			}
 		}
 
@@ -31,7 +31,7 @@ pipeline
 		{
 			steps
 			{
-				sh 'mvn package'
+				mvn package
 			}
 		}
    }
