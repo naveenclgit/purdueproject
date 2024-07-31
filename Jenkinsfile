@@ -60,7 +60,7 @@ pipeline {
         stage('Deploy to Docker Swarm') {
             steps {
                 sshagent(['kvmsys_oel701']) {
-                    sh "ssh -o StrictHostKeyChecking=no -l root 10.0.0.79 'docker service rm purdueproject; docker service create --name purdueproject --mode global --publish published=8080,target=8282,mode=host naveencldock/purdueproject'"
+                    sh "ssh -o StrictHostKeyChecking=no -l root 10.0.0.79 'docker service rm purdueproject; docker service create --name purdueproject --mode global --publish published=8282,target=8080,mode=host naveencldock/purdueproject'"
                 }
             }
         }
