@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: abc-tech-deploy
+  namespace: purdueproject 
+spec:
+  selector:
+    matchLabels:
+      app: abc_deploy
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: abc_deploy
+    spec:
+      containers:
+      - name: abc-app
+        image: naveencldock/purdueproject
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: abc-nodeport-svc
+  namespace: purdueproject 
+spec:
+  selector:
+    app: abc_deploy
+  ports:
+    - protocol: TCP
+      port: 8585
+      targetPort: 8080
+  type: NodePort
+
