@@ -69,8 +69,9 @@ pipeline {
 		{
 			steps
 			{
-				sh 'kubectl create -f deploy.yaml'
-			        sh  'kubectl create -f svc.yaml'
+				sh 'kubectl version'
+				sh 'kubectl apply -f deploy.yaml'
+			        sh  'kubectl apply -f svc.yaml'
 			}
 		} 
 
